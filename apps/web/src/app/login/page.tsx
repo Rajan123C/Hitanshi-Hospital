@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Loader2, HeartPulse } from "lucide-react";
+import { Loader2, Building2 } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -56,12 +56,12 @@ export default function LoginPage() {
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Card className="w-full max-w-md border-none bg-white shadow-xl shadow-blue-900/5">
         <CardHeader className="space-y-1 flex flex-col items-center">
-          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
-            <HeartPulse className="h-6 w-6" />
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#0F4C81]/10 text-[#0F4C81]">
+            <Building2 className="h-6 w-6" />
           </div>
-          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
+          <CardTitle className="text-2xl font-bold">Welcome to Hitankshi Hospital</CardTitle>
           <CardDescription>
-            Log in to manage your appointments and health
+            Log in to manage your OPD appointments
           </CardDescription>
         </CardHeader>
         <CardContent>

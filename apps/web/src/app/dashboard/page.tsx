@@ -19,6 +19,22 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+interface Appointment {
+  id: string;
+  date: string;
+  startTime: string;
+  status: string;
+  doctor: {
+    user: {
+      name: string;
+    };
+    specialization: string;
+  };
+  patient: {
+    name: string;
+  };
+}
+
 export default function DashboardPage() {
   const { user, isLoading: authLoading, logout } = useAuth();
   const router = useRouter();
@@ -61,7 +77,7 @@ export default function DashboardPage() {
             <div>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight">Dashboard</h1>
               <p className="text-slate-500 font-medium mt-1">
-                Hello, {user.name.split(' ')[0]}. Welcome back to your health center.
+                Welcome back to Hitankshi Hospital.
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -116,7 +132,7 @@ export default function DashboardPage() {
                 </div>
               ) : appointments?.length > 0 ? (
                 <div className="space-y-4">
-                  {appointments.map((apt: any) => (
+                  {appointments.map((apt: Appointment) => (
                     <GlassCard key={apt.id} className="p-0 border-slate-200/60 group hover:border-primary/30 transition-all duration-500">
                       <div className="p-6 flex flex-col md:flex-row items-center gap-6">
                         <div className="h-20 w-20 rounded-[20px] bg-slate-50 border border-slate-100 flex flex-col items-center justify-center text-slate-900 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
@@ -183,11 +199,11 @@ export default function DashboardPage() {
                  <div className="space-y-4 mb-8">
                     <div className="flex justify-between items-center text-sm font-medium border-b border-white/5 pb-4">
                        <span className="text-slate-400">Membership</span>
-                       <span className="text-teal-400 font-bold">Premium Plus</span>
+                        <span className="text-teal-400 font-bold">Verified Patient</span>
                     </div>
                     <div className="flex justify-between items-center text-sm font-medium border-b border-white/5 pb-4">
-                       <span className="text-slate-400">Health Score</span>
-                       <span className="text-blue-400 font-bold text-lg">92/100</span>
+                        <span className="text-slate-400">Hospital</span>
+                        <span className="text-blue-400 font-bold text-sm">Hitankshi, Mira Road</span>
                     </div>
                  </div>
                  <Button className="w-full bg-white text-slate-900 hover:bg-slate-100 h-12 rounded-2xl font-black tracking-tight transition-transform active:scale-95">
@@ -224,8 +240,8 @@ export default function DashboardPage() {
 }
 
 const stats = [
-  { label: 'Total Visits', value: '24', icon: <Calendar size={24} />, color: 'blue' },
-  { label: 'Prescriptions', value: '12', icon: <Activity size={24} />, color: 'teal' },
-  { label: 'Spent', value: '$2,450', icon: <CreditCard size={24} />, color: 'indigo' },
-  { label: 'Health Score', value: '92%', icon: <TrendingUp size={24} />, color: 'amber' },
+  { label: 'Upcoming', value: '—', icon: <Calendar size={24} />, color: 'blue' },
+  { label: 'Completed', value: '—', icon: <Activity size={24} />, color: 'teal' },
+  { label: 'Cancelled', value: '—', icon: <CreditCard size={24} />, color: 'indigo' },
+  { label: 'Total Visits', value: '—', icon: <TrendingUp size={24} />, color: 'amber' },
 ];

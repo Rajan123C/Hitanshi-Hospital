@@ -7,8 +7,8 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MediBook | Healthcare & Doctor Appointments',
-  description: 'Book appointments with top doctors instantly.',
+  title: 'Hitankshi Hospital | Compassionate Care, Advanced Medicine — Mira Road',
+  description: 'Book OPD appointments online at Hitankshi Hospital, Mira Road. Specialized care for Diabetes & Motherhood by Dr. R.K. Sharma and Dr. Priti Sharma.',
 };
 
 import { Navbar } from "@/components/layout/navbar";

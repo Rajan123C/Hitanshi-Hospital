@@ -120,7 +120,7 @@ export class DoctorsService {
       orderBy: { specialization: 'asc' },
     });
 
-    return specializations.map((s) => s.specialization);
+    return specializations.map((s: { specialization: string }) => s.specialization);
   }
 
   async getCities() {
@@ -131,7 +131,7 @@ export class DoctorsService {
       orderBy: { city: 'asc' },
     });
 
-    return cities.map((c) => c.city);
+    return cities.map((c: { city: string }) => c.city);
   }
 
   async createProfile(userId: string, dto: CreateDoctorProfileDto) {

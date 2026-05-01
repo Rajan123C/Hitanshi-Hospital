@@ -25,7 +25,7 @@ const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  role: z.enum(["PATIENT", "DOCTOR"]),
+  role: z.literal("PATIENT"),
 });
 
 type RegisterFormValues = z.infer<typeof registerSchema>;
@@ -66,7 +66,7 @@ export default function RegisterPage() {
           </div>
           <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
           <CardDescription>
-            Join MediBook to book and manage appointments
+            Register at Hitankshi Hospital to book OPD appointments
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -125,7 +125,6 @@ export default function RegisterPage() {
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="PATIENT">Patient seeking care</SelectItem>
-                        <SelectItem value="DOCTOR">Doctor looking to join</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

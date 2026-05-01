@@ -8,6 +8,95 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(uuid())
-  email String @unique
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String
+  phone         String?
+  avatar        String?
+  role          String    @default("PATIENT") // SQLite doesn't support enums natively in the same way, using String with client-side validation
+  googleId      String?   @unique
+  isVerified    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  doctorProfile Doctor?
+  appointments  Appointment[] @relation("PatientAppointments")
+  
+  @@index([email])
+  @@index([role])
 }
+
+model Doctor {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  specialization  String
+  qualifications  String   // SQLite doesn't support String[]
+  experience      Int      // years
+  bio             String?
+  fees            Float    // SQLite doesn't support Decimal
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  gender          String?
+  city            String
+  state           String
+  hospital        String?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  availability    Availability[]
+  appointments    Appointment[]
+
+  @@index([specialization])
+  @@index([city])
+  @@index([rating])
+  @@index([fees])
+}
+
+model Availability {
+  id        String   @id @default(uuid())
+  doctorId  String
+  date      DateTime
+  startTime String   
+  endTime   String   
+  isBooked  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  doctor    Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  appointment Appointment?
+
+  @@unique([doctorId, date, startTime])
+  @@index([doctorId, date])
+  @@index([date, isBooked])
+}
+
+model Appointment {
+  id             String            @id @default(uuid())
+  patientId      String
+  doctorId       String
+  availabilityId String            @unique
+  date           DateTime
+  startTime      String
+  endTime        String
+  status         String            @default("PENDING")
+  reason         String?
+  notes          String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  // Relations
+  patient      User         @relation("PatientAppointments", fields: [patientId], references: [id])
+  doctor       Doctor       @relation(fields: [doctorId], references: [id])
+  availability Availability @relation(fields: [availabilityId], references: [id])
+
+  @@index([patientId])
+  @@index([doctorId])
+  @@index([date])
+  @@index([status])
+}
+

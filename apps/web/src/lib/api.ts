@@ -3,7 +3,7 @@ import axios from 'axios';
 // Get base URL from env or fallback to local API
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data: T;
   meta?: {
@@ -37,7 +37,7 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => {
     // Our API returns data wrapped in a {success, data, meta} format
-    return response.data as any; // Cast as any to allow direct success check
+    return response.data as ApiResponse; // Cast to ApiResponse type
   },
   async (error) => {
     const originalRequest = error.config;
@@ -64,7 +64,7 @@ api.interceptors.response.use(
           }
           return axios(originalRequest);
         }
-      } catch (e) {
+      } catch (_e) {
         // Refresh token failed – clear tokens and force logout
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
