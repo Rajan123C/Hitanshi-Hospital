@@ -35,9 +35,9 @@ api.interceptors.request.use((config) => {
 
 // Response Interceptor: Handle Token Refresh & Errors
 api.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     // Our API returns data wrapped in a {success, data, meta} format
-    return response.data as ApiResponse; // Cast to ApiResponse type
+    return response.data;
   },
   async (error) => {
     const originalRequest = error.config;

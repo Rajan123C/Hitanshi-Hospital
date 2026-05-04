@@ -11,6 +11,12 @@ interface User {
   role: "PATIENT" | "DOCTOR" | "ADMIN";
 }
 
+interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
+}
+
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
@@ -38,7 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      const res = (await api.get("/auth/profile")) as ApiResponse;
+      const res = (await api.get("/auth/profile")) as ApiResponse<User>;
       if (res.success && res.data) {
         setUser(res.data);
       }
@@ -51,7 +57,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const login = async (credentials: any) => {
-    const res = (await api.post("/auth/login", credentials)) as ApiResponse;
+    const res = (await api.post("/auth/login", credentials)) as ApiResponse<AuthResponse>;
     if (res.success && res.data) {
       localStorage.setItem("access_token", res.data.accessToken);
       localStorage.setItem("refresh_token", res.data.refreshToken);
@@ -61,7 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const register = async (credentials: any) => {
-    const res = (await api.post("/auth/register", credentials)) as ApiResponse;
+    const res = (await api.post("/auth/register", credentials)) as ApiResponse<AuthResponse>;
     if (res.success && res.data) {
       localStorage.setItem("access_token", res.data.accessToken);
       localStorage.setItem("refresh_token", res.data.refreshToken);

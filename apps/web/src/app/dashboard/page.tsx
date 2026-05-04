@@ -48,7 +48,7 @@ export default function DashboardPage() {
   const { data: appointments, isLoading: appointmentsLoading, refetch } = useQuery({
     queryKey: ["appointments"],
     queryFn: async () => {
-      const res = (await api.get("/appointments")) as ApiResponse;
+      const res = (await api.get("/appointments")) as ApiResponse<Appointment[]>;
       return res.data;
     },
     enabled: !!user,
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                 <div className="space-y-4">
                   {[1, 2].map(i => <Skeleton key={i} className="h-32 w-full rounded-[24px]" />)}
                 </div>
-              ) : appointments?.length > 0 ? (
+              ) : appointments && appointments.length > 0 ? (
                 <div className="space-y-4">
                   {appointments.map((apt: Appointment) => (
                     <GlassCard key={apt.id} className="p-0 border-slate-200/60 group hover:border-primary/30 transition-all duration-500">
