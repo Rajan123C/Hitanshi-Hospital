@@ -17,11 +17,30 @@ async function bootstrap() {
   app.use(helmet());
 
   // CORS
+  const frontendUrl = configService.get<string>('FRONTEND_URL');
+  const origins = ['http://localhost:3000'];
+  if (frontendUrl) {
+    origins.push(frontendUrl);
+    // Also add version with/without trailing slash if needed
+    if (frontendUrl.endsWith('/')) {
+      origins.push(frontendUrl.slice(0, -1));
+    } else {
+      origins.push(`${frontendUrl}/`);
+    }
+  }
+
   app.enableCors({
-    origin: configService.get<string>('FRONTEND_URL') || 'http://localhost:3000',
+    origin: origins,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: [
+      'Content-Type', 
+      'Authorization', 
+      'X-Requested-With', 
+      'Accept',
+      'Origin',
+    ],
+    exposedHeaders: ['Set-Cookie'],
   });
 
   // Global prefix

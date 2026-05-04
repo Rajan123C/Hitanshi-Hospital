@@ -31,7 +31,7 @@ const mockDoctors: Doctor[] = [
   {
     id: "1",
     name: "Dr. Priti Sharma",
-    email: "priti@hitankshi.com",
+    email: "priti@Hitanshi.com",
     specialization: "Obstetrics & Gynecology",
     status: "Active",
     image: "/dr-priti-sharma-final-real.jpg",
@@ -39,7 +39,7 @@ const mockDoctors: Doctor[] = [
   {
     id: "2",
     name: "Dr. R.K. Sharma",
-    email: "rk@hitankshi.com",
+    email: "rk@Hitanshi.com",
     specialization: "Diabetology & General Medicine",
     status: "Active",
     image: "/dr-rk-sharma-final-real.png",
@@ -59,7 +59,7 @@ export default function AdminDoctorsPage() {
                 <ShieldCheck size={14} /> Admin Portal
               </div>
               <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Doctor Management</h1>
-              <p className="text-slate-500 mt-1">Add, edit, or manage the medical staff of Hitankshi Hospital.</p>
+              <p className="text-slate-500 mt-1">Add, edit, or manage the medical staff of Hitanshi Hospital.</p>
             </div>
             <Button className="rounded-2xl h-12 px-6 bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-lg shadow-[#0F4C81]/20 font-bold group">
               <Plus className="mr-2 h-5 w-5 transition-transform group-hover:rotate-90" />

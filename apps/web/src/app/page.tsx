@@ -32,7 +32,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <Image src="/real-hospital-building.png" alt="Hitankshi Hospital" fill className="object-cover opacity-15" priority sizes="100vw" />
+          <Image src="/real-hospital-building.png" alt="Hitanshi Hospital" fill className="object-cover opacity-15" priority sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70" />
         </div>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0F4C81]/5 blur-[120px] rounded-full -z-10" />
@@ -93,7 +93,7 @@ export default function Home() {
           {/* Hero Image */}
           <div className="relative hidden lg:block">
             <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl shadow-[#0F4C81]/10 border border-white/60">
-              <Image src="/real-hospital-building.png" alt="Hitankshi Hospital Building" fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/real-hospital-building.png" alt="Hitanshi Hospital Building" fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F4C81]/30 via-transparent to-transparent" />
             </div>
             {/* Floating Card: Live Status */}
@@ -152,7 +152,7 @@ export default function Home() {
                   <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#0F4C81]" /> 35+ Yrs Exp.</span>
                   <span className="flex items-center gap-1.5"><MapPin size={14} className="text-teal-500" /> Mira Road</span>
                 </div>
-                <Link href="/doctors" className="block">
+                <Link href="/book" className="block">
                   <Button className="w-full rounded-2xl h-12 font-bold bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-lg shadow-[#0F4C81]/15 group/btn">
                     Book Appointment
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -186,7 +186,7 @@ export default function Home() {
                   <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#0F4C81]" /> 25+ Yrs Exp.</span>
                   <span className="flex items-center gap-1.5"><MapPin size={14} className="text-teal-500" /> Mira Road</span>
                 </div>
-                <Link href="/doctors" className="block">
+                <Link href="/book" className="block">
                   <Button className="w-full rounded-2xl h-12 font-bold bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-lg shadow-[#0F4C81]/15 group/btn">
                     Book Appointment
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -280,13 +280,13 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-teal-300 font-bold text-sm uppercase tracking-[0.2em] mb-4">About Hitankshi Hospital</p>
+              <p className="text-teal-300 font-bold text-sm uppercase tracking-[0.2em] mb-4">About Hitanshi Hospital</p>
               <h2 className="text-4xl lg:text-5xl font-bold mb-8">
                 Your Health,{" "}
                 <span className="text-teal-300">Our Priority</span>
               </h2>
               <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                Founded in 2007 by Dr. R.K. Sharma and Dr. Priti Sharma, Hitankshi Hospital began its journey as a humble 5-bed clinic. Today, it stands as a 35-bed multi-specialty, NABH-accredited facility in Mira Road. We combine advanced medicine with a deeply compassionate approach to family healthcare.
+                Founded in 2007 by Dr. R.K. Sharma and Dr. Priti Sharma, Hitanshi Hospital began its journey as a humble 5-bed clinic. Today, it stands as a 35-bed multi-specialty, NABH-accredited facility in Mira Road. We combine advanced medicine with a deeply compassionate approach to family healthcare.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -328,14 +328,14 @@ export default function Home() {
               <div className="relative h-[40px] w-auto group-hover:scale-105 transition-transform duration-300 flex items-center">
                 <Image 
                   src="/logo.png" 
-                  alt="Hitankshi Hospital Official Logo" 
+                  alt="Hitanshi Hospital Official Logo" 
                   width={40}
                   height={40}
                   className="h-[40px] w-auto object-contain"
                 />
               </div>
               <div className="flex flex-col justify-center leading-none">
-                <span className="font-bold text-xl tracking-tight text-slate-900 font-inter">Hitankshi</span>
+                <span className="font-bold text-xl tracking-tight text-slate-900 font-inter">Hitanshi</span>
                 <span className="text-[10px] font-bold text-[#0F4C81] uppercase tracking-[0.15em]">Hospital</span>
               </div>
             </Link>
@@ -373,7 +373,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container mx-auto px-4 pt-10 mt-10 border-t border-slate-100 text-center text-slate-400 text-sm font-medium">
-          © {new Date().getFullYear()} Hitankshi Hospital, Mira Road. All rights reserved.
+          © {new Date().getFullYear()} Hitanshi Hospital, Mira Road. All rights reserved.
         </div>
       </footer>
     </div>

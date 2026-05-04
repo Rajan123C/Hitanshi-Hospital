@@ -51,6 +51,18 @@ export class AppointmentsService {
         data: { isBooked: true },
       });
 
+      // Generate a token number (HT-YYYYMMDD-XXXX)
+      const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+      const count = await tx.appointment.count({
+        where: {
+          date: {
+            gte: new Date(new Date().setHours(0, 0, 0, 0)),
+            lt: new Date(new Date().setHours(23, 59, 59, 999)),
+          },
+        },
+      });
+      const tokenNumber = `HT-${dateStr}-${String(count + 1).padStart(4, '0')}`;
+
       // Create the appointment
       return tx.appointment.create({
         data: {
@@ -62,6 +74,7 @@ export class AppointmentsService {
           endTime: slot.endTime,
           reason: dto.reason,
           status: AppointmentStatus.PENDING,
+          tokenNumber,
         },
         include: {
           doctor: {

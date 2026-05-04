@@ -26,7 +26,7 @@ export function Navbar() {
           <div className="relative h-[45px] w-auto group-hover:scale-105 transition-transform duration-300 flex items-center">
             <Image 
               src="/logo.png" 
-              alt="Hitankshi Hospital Official Logo" 
+              alt="Hitanshi Hospital Official Logo" 
               width={45}
               height={45}
               className="h-[45px] w-auto object-contain"
@@ -35,7 +35,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col justify-center leading-none">
             <span className="font-bold text-xl tracking-tight text-slate-900 font-inter">
-              Hitankshi
+              Hitanshi
             </span>
             <span className="text-[10px] font-bold text-[#0F4C81] uppercase tracking-[0.15em]">
               Hospital

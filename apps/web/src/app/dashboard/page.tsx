@@ -77,7 +77,7 @@ export default function DashboardPage() {
             <div>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight">Dashboard</h1>
               <p className="text-slate-500 font-medium mt-1">
-                Welcome back to Hitankshi Hospital.
+                Welcome back to Hitanshi Hospital.
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -203,7 +203,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex justify-between items-center text-sm font-medium border-b border-white/5 pb-4">
                         <span className="text-slate-400">Hospital</span>
-                        <span className="text-blue-400 font-bold text-sm">Hitankshi, Mira Road</span>
+                        <span className="text-blue-400 font-bold text-sm">Hitanshi, Mira Road</span>
                     </div>
                  </div>
                  <Button className="w-full bg-white text-slate-900 hover:bg-slate-100 h-12 rounded-2xl font-black tracking-tight transition-transform active:scale-95">
