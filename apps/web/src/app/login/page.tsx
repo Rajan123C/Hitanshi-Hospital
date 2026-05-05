@@ -22,7 +22,7 @@ import { Loader2, Building2, Mail, Lock, Phone } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const GoogleIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -70,7 +70,7 @@ export default function LoginPage() {
       await login(data);
       toast.success("Welcome back!");
     } catch (error: any) {
-      toast.error(error.message || "Failed to login. Please check your credentials.");
+      toast.error(error.message || "Failed to login.");
     } finally {
       setIsLoading(false);
     }
@@ -108,41 +108,41 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center p-4 bg-[#F8FAFC]">
-      <Card className="w-full max-w-md border-none bg-white shadow-2xl shadow-blue-900/5 rounded-[2.5rem] overflow-hidden">
-        <CardHeader className="space-y-2 flex flex-col items-center pt-12 pb-8">
-          <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-[2rem] bg-[#0F4C81] text-white shadow-xl shadow-[#0F4C81]/20">
-            <Building2 className="h-10 w-10" />
+      <Card className="w-full max-w-sm border-none bg-white shadow-xl rounded-[2rem] overflow-hidden">
+        <CardHeader className="space-y-1 flex flex-col items-center pt-10 pb-6">
+          <div className="mb-3 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0F4C81] text-white shadow-lg">
+            <Building2 className="h-7 w-7" />
           </div>
-          <CardTitle className="text-3xl font-extrabold tracking-tight text-slate-900 text-center">Hitanshi Hospital</CardTitle>
-          <CardDescription className="text-base text-slate-500 font-semibold">
+          <CardTitle className="text-2xl font-black tracking-tight text-slate-900 text-center">Hitanshi Hospital</CardTitle>
+          <CardDescription className="text-sm text-slate-500 font-bold">
             Patient & Doctor Portal
           </CardDescription>
         </CardHeader>
         
-        <CardContent className="px-10 pb-8">
+        <CardContent className="px-8 pb-6">
           <Tabs defaultValue="password" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-100 p-1.5 rounded-2xl h-14">
-              <TabsTrigger value="password" className="rounded-xl font-bold data-[state=active]:bg-white data-[state=active]:text-[#0F4C81] data-[state=active]:shadow-sm">Password</TabsTrigger>
-              <TabsTrigger value="otp" className="rounded-xl font-bold data-[state=active]:bg-white data-[state=active]:text-[#0F4C81] data-[state=active]:shadow-sm">OTP Login</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 mb-6 bg-slate-100 p-1 rounded-xl h-12">
+              <TabsTrigger value="password" className="rounded-lg font-bold data-[state=active]:bg-white data-[state=active]:text-[#0F4C81]">Password</TabsTrigger>
+              <TabsTrigger value="otp" className="rounded-lg font-bold data-[state=active]:bg-white data-[state=active]:text-[#0F4C81]">OTP Login</TabsTrigger>
             </TabsList>
             
             <TabsContent value="password">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700 font-bold flex items-center gap-2">
-                          <Mail size={16} className="text-[#0F4C81]" /> Email Address
+                        <FormLabel className="text-slate-700 font-bold text-xs flex items-center gap-2">
+                          <Mail size={14} className="text-[#0F4C81]" /> EMAIL ADDRESS
                         </FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="name@example.com" 
                             {...field} 
                             disabled={isLoading} 
-                            className="h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#0F4C81] focus:ring-[#0F4C81]/20 transition-all text-lg"
+                            className="h-11 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white text-base"
                           />
                         </FormControl>
                         <FormMessage />
@@ -154,8 +154,8 @@ export default function LoginPage() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700 font-bold flex items-center gap-2">
-                          <Lock size={16} className="text-[#0F4C81]" /> Password
+                        <FormLabel className="text-slate-700 font-bold text-xs flex items-center gap-2">
+                          <Lock size={14} className="text-[#0F4C81]" /> PASSWORD
                         </FormLabel>
                         <FormControl>
                           <Input 
@@ -163,16 +163,16 @@ export default function LoginPage() {
                             placeholder="••••••••"
                             {...field} 
                             disabled={isLoading} 
-                            className="h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#0F4C81] focus:ring-[#0F4C81]/20 transition-all text-lg"
+                            className="h-11 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white text-base"
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full h-16 text-xl font-black rounded-2xl bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-xl shadow-[#0F4C81]/30 transition-all active:scale-[0.98] mt-4" disabled={isLoading}>
-                    {isLoading && <Loader2 className="mr-3 h-6 w-6 animate-spin" />}
-                    SIGN IN / साइन इन
+                  <Button type="submit" className="w-full h-12 text-base font-black rounded-xl bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-lg mt-2" disabled={isLoading}>
+                    {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+                    SIGN IN
                   </Button>
                 </form>
               </Form>
@@ -180,21 +180,21 @@ export default function LoginPage() {
             
             <TabsContent value="otp">
               <Form {...otpForm}>
-                <form onSubmit={otpForm.handleSubmit(otpSent ? onVerifyOtp : onSendOtp)} className="space-y-6">
+                <form onSubmit={otpForm.handleSubmit(otpSent ? onVerifyOtp : onSendOtp)} className="space-y-4">
                   <FormField
                     control={otpForm.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-slate-700 font-bold flex items-center gap-2">
-                          <Mail size={16} className="text-[#0F4C81]" /> Email Address
+                        <FormLabel className="text-slate-700 font-bold text-xs flex items-center gap-2">
+                          <Mail size={14} className="text-[#0F4C81]" /> EMAIL ADDRESS
                         </FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="name@example.com" 
                             {...field} 
                             disabled={isLoading || otpSent} 
-                            className="h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#0F4C81] focus:ring-[#0F4C81]/20 transition-all text-lg"
+                            className="h-11 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white text-base"
                           />
                         </FormControl>
                         <FormMessage />
@@ -207,15 +207,15 @@ export default function LoginPage() {
                       name="otp"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-bold flex items-center gap-2">
-                            <Phone size={16} className="text-[#0F4C81]" /> Enter 6-digit OTP
+                          <FormLabel className="text-slate-700 font-bold text-xs flex items-center gap-2">
+                            <Phone size={14} className="text-[#0F4C81]" /> ENTER 6-DIGIT OTP
                           </FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="000000" 
                               {...field} 
                               disabled={isLoading} 
-                              className="h-14 rounded-2xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-[#0F4C81] focus:ring-[#0F4C81]/20 transition-all text-lg text-center tracking-[0.5em] font-black"
+                              className="h-11 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white text-base text-center tracking-widest font-black"
                             />
                           </FormControl>
                           <FormMessage />
@@ -223,28 +223,28 @@ export default function LoginPage() {
                       )}
                     />
                   )}
-                  <Button type="submit" className="w-full h-16 text-xl font-black rounded-2xl bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-xl shadow-[#0F4C81]/30 transition-all active:scale-[0.98] mt-4" disabled={isLoading}>
-                    {isLoading && <Loader2 className="mr-3 h-6 w-6 animate-spin" />}
-                    {otpSent ? "VERIFY OTP / सत्यापित करें" : "SEND OTP / ओटीपी भेजें"}
+                  <Button type="submit" className="w-full h-12 text-base font-black rounded-xl bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-lg mt-2" disabled={isLoading}>
+                    {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+                    {otpSent ? "VERIFY OTP" : "SEND OTP"}
                   </Button>
                 </form>
               </Form>
             </TabsContent>
           </Tabs>
 
-          <div className="relative w-full my-10">
+          <div className="relative w-full my-8">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t border-slate-100"></span>
             </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-4 text-slate-400 font-black tracking-[0.2em]">OR CONTINUE WITH</span>
+            <div className="relative flex justify-center text-[10px] uppercase">
+              <span className="bg-white px-3 text-slate-400 font-black tracking-widest">OR</span>
             </div>
           </div>
 
           <Button 
             variant="outline" 
             onClick={handleGoogleLogin}
-            className="w-full h-16 text-lg font-bold rounded-2xl border-2 border-slate-100 hover:bg-slate-50 transition-all flex items-center justify-center gap-3"
+            className="w-full h-12 text-sm font-bold rounded-xl border border-slate-200 hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
             disabled={isLoading}
           >
             <GoogleIcon />
@@ -252,11 +252,11 @@ export default function LoginPage() {
           </Button>
         </CardContent>
         
-        <CardFooter className="flex flex-col space-y-6 pb-12 px-10 bg-slate-50/50 pt-10">
-          <div className="text-center text-base text-slate-500 font-semibold">
+        <CardFooter className="flex flex-col space-y-4 pb-8 px-8 bg-slate-50/50 pt-6">
+          <div className="text-center text-sm text-slate-500 font-semibold">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="font-black text-[#0F4C81] hover:underline underline-offset-4 decoration-2">
-              Create one now / नया खाता
+            <Link href="/register" className="font-black text-[#0F4C81] hover:underline underline-offset-4">
+              Create Account
             </Link>
           </div>
         </CardFooter>
