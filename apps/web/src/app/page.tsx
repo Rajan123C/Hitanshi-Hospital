@@ -24,295 +24,342 @@ import {
   Scissors,
   Microscope,
   Bed,
+  Sparkles,
 } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+      <section className="relative pt-20 pb-32 lg:pt-32 lg:pb-48 overflow-hidden">
+        {/* Background Elements */}
         <div className="absolute inset-0 -z-10">
-          <Image src="/real-hospital-building.png" alt="Hitanshi Hospital" fill className="object-cover opacity-15" priority sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70" />
+          <Image 
+            src="/real-hospital-building.png" 
+            alt="Hitanshi Hospital Building" 
+            fill 
+            className="object-cover opacity-[0.08] saturate-0" 
+            priority 
+            sizes="100vw" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/95 to-[#F8FAFC]" />
         </div>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0F4C81]/5 blur-[120px] rounded-full -z-10" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/5 blur-[100px] rounded-full -z-10" />
+        
+        {/* Decorative Blobs */}
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#0F4C81]/10 blur-[120px] rounded-full -z-10 animate-pulse" />
+        <div className="absolute bottom-[5%] left-[-10%] w-[500px] h-[500px] bg-teal-500/10 blur-[100px] rounded-full -z-10" />
 
-        <div className="container mx-auto px-6 lg:px-16 xl:px-24 grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-24 items-center h-full">
-          <div className="space-y-8 max-w-2xl lg:pl-16 xl:pl-32 pb-12 lg:pb-24 -mt-16 lg:-mt-32 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0F4C81]/5 border border-[#0F4C81]/10 text-[#0F4C81] text-sm font-semibold">
-              <Building2 size={14} />
-              NABH Accredited Multi-Specialty Hospital — Since 2007
+        <div className="container mx-auto px-6 lg:px-16 xl:px-24">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-24 items-center">
+            <div className="space-y-10 relative z-10">
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl bg-white border border-slate-200 shadow-sm text-[#0F4C81] text-sm font-black tracking-wide">
+                <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#0F4C81] text-white">
+                  <ShieldCheck size={14} />
+                </div>
+                NABH ACCREDITED • SINCE 2007
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 leading-[0.95]">
+                  Compassionate Care, <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F4C81] via-[#0F4C81] to-teal-600">
+                    Advanced Medicine.
+                  </span>
+                </h1>
+                <p className="text-xl lg:text-2xl text-slate-500 leading-relaxed max-w-xl font-medium">
+                  Experience world-class healthcare in Mira Road. Specialized in <span className="text-slate-900 font-bold border-b-2 border-teal-500/30">Diabetes Management</span> and <span className="text-slate-900 font-bold border-b-2 border-pink-500/30">Safe Motherhood</span>.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-5">
+                <Link href="/doctors">
+                  <Button size="lg" className="rounded-2xl h-16 px-10 text-xl font-black bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-2xl shadow-[#0F4C81]/40 group border-none">
+                    Book OPD Appointment
+                    <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <a href="tel:+919029921938">
+                  <Button variant="outline" size="lg" className="rounded-2xl h-16 px-10 text-xl font-bold text-slate-700 border-2 border-slate-200 bg-white hover:bg-slate-50 transition-all shadow-sm">
+                    <Phone className="mr-3 h-6 w-6 text-[#0F4C81]" />
+                    Emergency Contact
+                  </Button>
+                </a>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center gap-10 pt-10 border-t border-slate-200">
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600">
+                    <Users size={28} />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-slate-900">10,000+</p>
+                    <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">Happy Patients</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                    <Activity size={28} />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-slate-900">18+ Yrs</p>
+                    <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">Clinical Excellence</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1]">
-              Compassionate Care,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0F4C81] to-teal-500">
-                Advanced Medicine.
-              </span>
-            </h1>
+            {/* Hero Image / Visual */}
+            <div className="relative">
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-[0_32px_64px_-12px_rgba(15,76,129,0.2)] border-8 border-white group">
+                <Image 
+                  src="/real-hospital-building.png" 
+                  alt="Hitanshi Hospital Mira Road" 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                  priority 
+                  sizes="(max-width: 768px) 100vw, 40vw" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F4C81]/40 via-transparent to-transparent" />
+                
+                {/* Floating Badge */}
+                <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 border border-white/50">
+                  <Sparkles className="text-amber-500 h-5 w-5" />
+                  <span className="font-black text-slate-900 text-sm">Mira Road&apos;s Trusted Hospital</span>
+                </div>
+              </div>
 
-            <p className="text-lg lg:text-xl text-slate-500 leading-relaxed max-w-lg">
-              Specialized care for <strong className="text-slate-700">Diabetes</strong> and{" "}
-              <strong className="text-slate-700">Motherhood</strong>. Book your OPD appointments
-              online to skip the queue.
+              {/* Live Status Card */}
+              <GlassCard intensity="high" className="absolute -bottom-10 -left-10 p-6 flex flex-col gap-4 shadow-2xl border-white bg-white/80 w-72 rounded-[2rem]">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Live Clinic Status</span>
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-3 w-3 rounded-full bg-teal-500 animate-ping"></span>
+                    <span className="text-xs font-bold text-teal-600 uppercase">Open</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 bg-teal-500/10 rounded-2xl flex items-center justify-center text-teal-600">
+                    <Clock size={28} />
+                  </div>
+                  <div>
+                    <p className="text-lg font-black text-slate-900">Normal Flow</p>
+                    <p className="text-sm text-slate-500 font-medium">Wait time: ~15 mins</p>
+                  </div>
+                </div>
+              </GlassCard>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Flagship Departments */}
+      <section className="py-32 lg:py-48 bg-white" id="departments">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center mb-24">
+            <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-[#0F4C81]/5 text-[#0F4C81] text-sm font-black tracking-[0.2em]">
+              OUR SPECIALIZATIONS
+            </div>
+            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-6 leading-tight">
+              World-Class Care in <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-[#0F4C81]">Every Department.</span>
+            </h2>
+            <p className="text-xl text-slate-500 font-medium leading-relaxed">
+              Skip the long queues at the reception. Book your OPD slot online with our senior consultants for immediate care.
             </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link href="/doctors">
-                <Button size="lg" className="rounded-full h-14 px-8 text-lg font-bold bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-xl shadow-[#0F4C81]/20 group">
-                  Book OPD Appointment
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <a href="tel:+919029921938">
-                <Button variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg font-bold text-slate-700 border-slate-200 hover:bg-slate-50">
-                  <Phone className="mr-2 h-5 w-5 text-[#0F4C81]" />
-                  Call Now
-                </Button>
-              </a>
-            </div>
-
-            {/* Trust Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-200/60">
-              <div>
-                <p className="text-3xl font-bold text-slate-900">18+</p>
-                <p className="text-sm text-slate-500 font-medium">Years Experience</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-slate-900">10k+</p>
-                <p className="text-sm text-slate-500 font-medium">Happy Patients</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-slate-900">15+</p>
-                <p className="text-sm text-slate-500 font-medium">Departments</p>
-              </div>
-            </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative hidden lg:block">
-            <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl shadow-[#0F4C81]/10 border border-white/60">
-              <Image src="/real-hospital-building.png" alt="Hitanshi Hospital Building" fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F4C81]/30 via-transparent to-transparent" />
-            </div>
-            {/* Floating Card: Live Status */}
-            <GlassCard intensity="high" className="absolute -bottom-6 -left-8 p-4 flex flex-col gap-2 shadow-xl border-white/60 w-64">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Live OPD Status</span>
-                <span className="flex h-2.5 w-2.5 rounded-full bg-teal-500 animate-pulse"></span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 bg-teal-500/10 rounded-full flex items-center justify-center text-teal-600">
-                  <Activity size={20} />
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Dr. Priti Sharma Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-pink-500/5 blur-[80px] rounded-full -z-10 group-hover:bg-pink-500/10 transition-colors" />
+              <GlassCard intensity="none" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
+                <div className="relative h-[450px] lg:h-[500px]">
+                  <Image 
+                    src="/dr-priti-sharma-final-real.jpg" 
+                    alt="Dr. Priti Sharma" 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
+                  
+                  {/* Badge */}
+                  <div className="absolute top-6 left-6 bg-pink-500 text-white px-5 py-2 rounded-2xl font-black text-sm shadow-xl shadow-pink-500/30 flex items-center gap-2">
+                    <Heart size={16} /> MOTHERHOOD EXPERT
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-900">Accepting Walk-ins</p>
-                  <p className="text-xs text-slate-500">Wait time: ~15 mins</p>
+                
+                <div className="p-10 lg:p-12 space-y-6 relative bg-white">
+                  <div>
+                    <h3 className="text-3xl font-black text-slate-900 mb-2">Dr. Priti Sharma</h3>
+                    <p className="text-[#0F4C81] font-black text-base uppercase tracking-widest">Obstetrics &amp; Gynecology</p>
+                  </div>
+                  <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                    Mira Road&apos;s most trusted name in maternity care. Specializing in high-risk pregnancies and painless deliveries with over 35 years of clinical excellence.
+                  </p>
+                  <div className="flex items-center gap-6 pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-slate-700 font-bold">
+                      <Clock size={20} className="text-[#0F4C81]" /> 35+ Yrs
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-700 font-bold">
+                      <Stethoscope size={20} className="text-teal-500" /> Senior Consultant
+                    </div>
+                  </div>
+                  <Link href="/doctors" className="block pt-4">
+                    <Button className="w-full rounded-[1.5rem] h-16 text-xl font-black bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-xl shadow-[#0F4C81]/20 group/btn">
+                      Book Appointment
+                      <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                    </Button>
+                  </Link>
                 </div>
-              </div>
-            </GlassCard>
-          </div>
-        </div>
-      </section>
-
-      {/* Department Cards — Main Focus */}
-      <section className="py-20 lg:py-28 bg-white" id="departments">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <p className="text-[#0F4C81] font-bold text-sm uppercase tracking-[0.2em] mb-3">Our Flagship Departments</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Choose Your Specialist</h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-lg">Select a department to book your OPD appointment with our expert consultants.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Dr. Priti Sharma — Gynecology */}
-            <GlassCard intensity="medium" className="p-0 overflow-hidden border-slate-200/60 hover:shadow-2xl hover:shadow-pink-500/5 transition-all duration-500 group">
-              <div className="relative h-72 overflow-hidden bg-gradient-to-br from-pink-50 to-rose-50">
-                <Image src="/dr-priti-sharma-final-real.jpg" alt="Dr. Priti Sharma" fill className="object-cover object-top transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-bold text-pink-600 border border-pink-100">
-                  <Heart size={12} className="inline mr-1" /> Women&apos;s Health
-                </div>
-              </div>
-              <div className="p-6 lg:p-8 space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-1">Dr. Priti Sharma</h3>
-                  <p className="text-[#0F4C81] font-semibold text-sm uppercase tracking-wider">Obstetrics &amp; Gynecology</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 bg-slate-50 rounded-lg text-xs font-semibold text-slate-600">MBBS</span>
-                  <span className="px-2.5 py-1 bg-slate-50 rounded-lg text-xs font-semibold text-slate-600">MS (Obs &amp; Gyn)</span>
-                  <span className="px-2.5 py-1 bg-slate-50 rounded-lg text-xs font-semibold text-slate-600">IMA Member</span>
-                </div>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Specialized in maternity care, high-risk pregnancies, and comprehensive women&apos;s health. A <strong>preferred destination for motherhood</strong> with successful daily deliveries. Creating a safe, welcoming experience for expecting mothers since 2007.
-                </p>
-                <div className="flex items-center gap-4 text-sm text-slate-500 border-t border-slate-100 pt-4">
-                  <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#0F4C81]" /> 35+ Yrs Exp.</span>
-                  <span className="flex items-center gap-1.5"><MapPin size={14} className="text-teal-500" /> Mira Road</span>
-                </div>
-                <Link href="/book" className="block">
-                  <Button className="w-full rounded-2xl h-12 font-bold bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-lg shadow-[#0F4C81]/15 group/btn">
-                    Book Appointment
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-            </GlassCard>
-
-            {/* Dr. RK Sharma — Diabetology */}
-            <GlassCard intensity="medium" className="p-0 overflow-hidden border-slate-200/60 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 group">
-              <div className="relative h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-sky-50">
-                <Image src="/dr-rk-sharma-final-real.png" alt="Dr. R.K. Sharma" fill className="object-cover object-top transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-bold text-blue-600 border border-blue-100">
-                  <Activity size={12} className="inline mr-1" /> Chronic Care
-                </div>
-              </div>
-              <div className="p-6 lg:p-8 space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-1">Dr. R.K. Sharma</h3>
-                  <p className="text-[#0F4C81] font-semibold text-sm uppercase tracking-wider">Diabetologist &amp; General Medicine</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 bg-slate-50 rounded-lg text-xs font-semibold text-slate-600">MBBS</span>
-                  <span className="px-2.5 py-1 bg-slate-50 rounded-lg text-xs font-semibold text-slate-600">PGDD (Diabetology)</span>
-                </div>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Expert in diabetes management, metabolic disorders, and preventive general medicine. Bringing <strong>20+ years of experience in Diabetology</strong> to provide personalized chronic care plans with a focus on long-term patient wellness.
-                </p>
-                <div className="flex items-center gap-4 text-sm text-slate-500 border-t border-slate-100 pt-4">
-                  <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#0F4C81]" /> 25+ Yrs Exp.</span>
-                  <span className="flex items-center gap-1.5"><MapPin size={14} className="text-teal-500" /> Mira Road</span>
-                </div>
-                <Link href="/book" className="block">
-                  <Button className="w-full rounded-2xl h-12 font-bold bg-[#0F4C81] hover:bg-[#0d3f6b] shadow-lg shadow-[#0F4C81]/15 group/btn">
-                    Book Appointment
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-            </GlassCard>
-          </div>
-        </div>
-      </section>
-
-      {/* Hospital Services / Facilities Grid */}
-      <section className="py-20 lg:py-28 bg-[#F8FAFC]">
-        <div className="container mx-auto px-4 text-center mb-16">
-          <p className="text-teal-600 font-bold text-sm uppercase tracking-[0.2em] mb-3">Modern Infrastructure</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">State-of-the-Art Facilities</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg">Compassionate family care combined with cutting-edge medical technology.</p>
-        </div>
-
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Featured Image 1 */}
-            <div className="lg:col-span-2 relative h-[300px] rounded-[32px] overflow-hidden shadow-lg group">
-              <Image src="/hospital-ward.png" alt="Hospital Ward" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 66vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                  <Bed className="text-teal-400" /> Fully Equipped ICU &amp; NICU
-                </h3>
-                <p className="text-slate-200">Advanced critical care for adults and specialized care for newborns.</p>
-              </div>
+              </GlassCard>
             </div>
 
-            {/* Facility 2 */}
-            {/* Facility 2 — Advanced Modular OT */}
-            <div className="relative h-[300px] rounded-[32px] overflow-hidden shadow-lg group">
-              <Image src="/hospital-ot.png" alt="Advanced Modular OT" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                  <Scissors className="text-blue-400 h-5 w-5" /> Advanced Modular OT
-                </h3>
-                <p className="text-slate-200 text-sm">Sterile, state-of-the-art operating theaters equipped for complex surgeries.</p>
-              </div>
-            </div>
-
-            {/* Facility 3 */}
-            {/* Facility 3 — Dedicated Labour Room */}
-            <div className="relative h-[300px] rounded-[32px] overflow-hidden shadow-lg group">
-              <Image src="/hospital-labour.png" alt="Dedicated Labour Room" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                  <Baby className="text-pink-400 h-5 w-5" /> Dedicated Labour Room
-                </h3>
-                <p className="text-slate-200 text-sm">Comfortable environment for daily successful deliveries and maternity care.</p>
-              </div>
-            </div>
-
-            {/* Featured Image 2 */}
-            <div className="relative h-[300px] rounded-[32px] overflow-hidden shadow-lg group">
-              <Image src="/hospital-corridor.png" alt="Hospital Corridor" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                  <Siren className="text-red-400" /> Emergency &amp; Trauma
-                </h3>
-                <p className="text-slate-200 text-sm">Round-the-clock emergency care available 24/7.</p>
-              </div>
-            </div>
-
-            {/* Facility 5 */}
-            {/* Facility 5 — Diagnostic Center */}
-            <div className="relative h-[300px] rounded-[32px] overflow-hidden shadow-lg group">
-              <Image src="/hospital-lab.png" alt="Diagnostic Center" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                  <Microscope className="text-teal-400 h-5 w-5" /> Diagnostic Center
-                </h3>
-                <p className="text-slate-200 text-sm">In-house laboratory and modern imaging services for rapid diagnosis.</p>
-              </div>
+            {/* Dr. RK Sharma Card */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-blue-500/5 blur-[80px] rounded-full -z-10 group-hover:bg-blue-500/10 transition-colors" />
+              <GlassCard intensity="none" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
+                <div className="relative h-[450px] lg:h-[500px]">
+                  <Image 
+                    src="/dr-rk-sharma-final-real.png" 
+                    alt="Dr. R.K. Sharma" 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
+                  
+                  {/* Badge */}
+                  <div className="absolute top-6 left-6 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black text-sm shadow-xl shadow-blue-600/30 flex items-center gap-2">
+                    <Activity size={16} /> DIABETES SPECIALIST
+                  </div>
+                </div>
+                
+                <div className="p-10 lg:p-12 space-y-6 relative bg-white">
+                  <div>
+                    <h3 className="text-3xl font-black text-slate-900 mb-2">Dr. R.K. Sharma</h3>
+                    <p className="text-[#0F4C81] font-black text-base uppercase tracking-widest">Diabetologist &amp; Medicine</p>
+                  </div>
+                  <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                    Pioneer in modern diabetes management and metabolic health. Providing personalized chronic care and preventive medicine since 2007.
+                  </p>
+                  <div className="flex items-center gap-6 pt-4 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-slate-700 font-bold">
+                      <Clock size={20} className="text-[#0F4C81]" /> 25+ Yrs
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-700 font-bold">
+                      <Sparkles size={20} className="text-teal-500" /> Lifestyle Expert
+                    </div>
+                  </div>
+                  <Link href="/doctors" className="block pt-4">
+                    <Button className="w-full rounded-[1.5rem] h-16 text-xl font-black bg-[#0F4C81] hover:bg-[#0d3f6b] text-white shadow-xl shadow-[#0F4C81]/20 group/btn">
+                      Book Appointment
+                      <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                    </Button>
+                  </Link>
+                </div>
+              </GlassCard>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About / Trust Section */}
-      <section className="py-20 lg:py-28 bg-[#0F4C81] text-white overflow-hidden relative" id="about">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-500/10 blur-[120px] rounded-full" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-teal-300 font-bold text-sm uppercase tracking-[0.2em] mb-4">About Hitanshi Hospital</p>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-8">
-                Your Health,{" "}
-                <span className="text-teal-300">Our Priority</span>
+      {/* Facilities Grid */}
+      <section className="py-32 bg-[#F8FAFC]">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-teal-500/10 text-teal-700 text-sm font-black tracking-[0.2em]">
+                INFRASTRUCTURE
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+                Built for <span className="text-teal-600">Healing.</span>
               </h2>
-              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                Founded in 2007 by Dr. R.K. Sharma and Dr. Priti Sharma, Hitanshi Hospital began its journey as a humble 5-bed clinic. Today, it stands as a 35-bed multi-specialty, NABH-accredited facility in Mira Road. We combine advanced medicine with a deeply compassionate approach to family healthcare.
+              <p className="text-xl text-slate-500 font-medium leading-relaxed">
+                Our 35-bed multi-specialty facility is equipped with modern medical technology to provide comprehensive emergency and elective care.
               </p>
+            </div>
+            <Link href="/doctors">
+              <Button variant="outline" className="h-16 px-8 rounded-2xl border-2 border-slate-200 text-lg font-bold hover:bg-white shadow-sm">
+                Explore All Facilities <ChevronRight size={20} className="ml-2" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {facilities.map((f, i) => (
+              <div key={i} className={`relative group overflow-hidden rounded-[2.5rem] shadow-xl ${f.large ? 'md:col-span-2 lg:col-span-2 h-[450px]' : 'h-[450px]'}`}>
+                <Image 
+                  src={f.image} 
+                  alt={f.title} 
+                  fill 
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10">
+                  <div className={`h-14 w-14 rounded-2xl bg-white/10 backdrop-blur-md mb-6 flex items-center justify-center text-white border border-white/20`}>
+                    {f.icon}
+                  </div>
+                  <h3 className="text-3xl font-black text-white mb-3 tracking-tight">{f.title}</h3>
+                  <p className="text-slate-300 text-lg font-medium leading-relaxed">{f.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & About Section */}
+      <section className="py-32 lg:py-48 bg-[#0F4C81] text-white relative overflow-hidden" id="about">
+        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-teal-500/10 blur-[150px] rounded-full" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div className="space-y-10">
+              <div className="space-y-6">
+                <h2 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">
+                  Mira Road&apos;s Trusted <br />
+                  <span className="text-teal-300">Healthcare Partner.</span>
+                </h2>
+                <p className="text-xl text-slate-300 font-medium leading-relaxed">
+                  Founded in 2007 by the visionary duo Dr. R.K. Sharma and Dr. Priti Sharma, Hitanshi Hospital stands as a pillar of trust and medical excellence in the Mira-Bhayandar region.
+                </p>
+              </div>
+              
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: "NABH Accredited", value: "✓" },
-                  { label: "Founded", value: "2007" },
-                  { label: "Beds Capacity", value: "35" },
-                  { label: "Departments", value: "15+" },
-                  { label: "Available", value: "24/7" },
-                ].map((stat, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                    <p className="text-2xl font-bold text-white">{stat.value}</p>
-                    <p className="text-sm text-slate-400 font-medium">{stat.label}</p>
+                  { label: "NABH Accredited", icon: <CheckCircle2 size={24} className="text-teal-400" /> },
+                  { label: "35 Bed Capacity", icon: <Bed size={24} className="text-teal-400" /> },
+                  { label: "15+ Departments", icon: <Building2 size={24} className="text-teal-400" /> },
+                  { label: "24/7 Emergency", icon: <Siren size={24} className="text-teal-400" /> },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                    {item.icon}
+                    <span className="font-bold text-lg">{item.label}</span>
                   </div>
                 ))}
               </div>
             </div>
+            
             <div className="relative">
-              <GlassCard className="bg-white/10 border-white/10 p-8 lg:p-10 backdrop-blur-xl">
-                <h3 className="text-2xl font-bold mb-6">Our Departments</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {departments.map((dept, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-slate-300 font-medium py-2">
-                      <CheckCircle2 size={16} className="text-teal-400 shrink-0" />
-                      {dept}
+              <div className="absolute inset-0 bg-teal-400/20 blur-[100px] rounded-full -z-10" />
+              <GlassCard intensity="none" className="bg-white p-12 lg:p-16 rounded-[3.5rem] border-none shadow-2xl">
+                <h3 className="text-3xl font-black text-slate-900 mb-10 flex items-center gap-3">
+                  <div className="h-10 w-2 bg-[#0F4C81] rounded-full" /> Specialized Services
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                  {specializedServices.map((s, i) => (
+                    <div key={i} className="flex items-start gap-4 group">
+                      <div className="mt-1 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <CheckCircle2 size={14} />
+                      </div>
+                      <span className="text-slate-700 font-bold text-lg">{s}</span>
                     </div>
                   ))}
+                </div>
+                <div className="mt-12 p-8 bg-slate-50 rounded-3xl border border-slate-100">
+                  <p className="text-slate-600 font-medium italic leading-relaxed">
+                    &quot;Our mission is to provide premium medical care that is both advanced and affordable, ensuring every family in Mira Road has access to the best health services.&quot;
+                  </p>
+                  <p className="mt-4 text-slate-900 font-black">— Dr. R.K. Sharma, Medical Director</p>
                 </div>
               </GlassCard>
             </div>
@@ -321,107 +368,127 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-white border-t border-slate-100" id="contact">
-        <div className="container mx-auto px-4 grid md:grid-cols-3 gap-12">
-          <div>
-            <Link href="/" className="flex items-center gap-3 mb-6 group">
-              <div className="relative h-[40px] w-auto group-hover:scale-105 transition-transform duration-300 flex items-center">
-                <Image 
-                  src="/logo.png" 
-                  alt="Hitanshi Hospital Official Logo" 
-                  width={40}
-                  height={40}
-                  className="h-[40px] w-auto object-contain"
-                />
-              </div>
-              <div className="flex flex-col justify-center leading-none">
-                <span className="font-bold text-xl tracking-tight text-slate-900 font-inter">Hitanshi</span>
-                <span className="text-[10px] font-bold text-[#0F4C81] uppercase tracking-[0.15em]">Hospital</span>
-              </div>
-            </Link>
-            <p className="text-slate-500 max-w-sm mb-6 leading-relaxed text-sm">
-              NABH Accredited Multi-Specialty Hospital providing compassionate care and advanced medicine since 2007.
-            </p>
-            <div className="space-y-2 text-sm text-slate-500">
-              <p className="flex items-start gap-2">
-                <MapPin size={16} className="text-[#0F4C81] mt-0.5 shrink-0" />
-                Shanti Park, MTNL Road, Near Don Bosco School, Mira Road (East), Maharashtra — 401107
+      <footer className="pt-24 pb-12 bg-white border-t border-slate-200" id="contact">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-[1.5fr_1fr_1fr] gap-20 pb-20">
+            <div className="space-y-8">
+              <Link href="/" className="flex items-center gap-4 group">
+                <div className="relative h-[60px] w-auto">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Hitanshi Hospital Official Logo" 
+                    width={60}
+                    height={60}
+                    className="h-[60px] w-auto object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-black text-3xl tracking-tighter text-slate-900 leading-none">Hitanshi</span>
+                  <span className="text-xs font-black text-[#0F4C81] uppercase tracking-[0.3em]">Hospital</span>
+                </div>
+              </Link>
+              <p className="text-xl text-slate-500 font-medium max-w-sm leading-relaxed">
+                Providing compassionate care and advanced medical excellence in Mira Road since 2007.
               </p>
-              <p className="flex items-center gap-2">
-                <Phone size={16} className="text-[#0F4C81] shrink-0" />
-                <a href="tel:+919029921938" className="hover:text-[#0F4C81] transition-colors">+91 90299 21938</a>
-              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 max-w-sm">
+                  <MapPin size={24} className="text-[#0F4C81] mt-1 shrink-0" />
+                  <p className="text-slate-600 font-bold">Shanti Park, MTNL Road, Near Don Bosco School, Mira Road (East), MH — 401107</p>
+                </div>
+                <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl border border-blue-100 max-w-sm">
+                  <Phone size={24} className="text-[#0F4C81] shrink-0" />
+                  <a href="tel:+919029921938" className="text-[#0F4C81] text-lg font-black">+91 90299 21938</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest">Navigation</h4>
+              <ul className="space-y-4">
+                {['Our Doctors', 'Book Appointment', 'Specializations', 'About Us', 'Contact'].map((link, i) => (
+                  <li key={i}>
+                    <Link href="/doctors" className="text-slate-500 hover:text-[#0F4C81] font-bold text-lg transition-colors flex items-center gap-2 group">
+                      <ChevronRight size={18} className="text-slate-300 group-hover:text-[#0F4C81] transition-colors" /> {link}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-8">
+              <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest">Flagship Departments</h4>
+              <ul className="space-y-4">
+                {[
+                  'Obstetrics & Gynecology',
+                  'Diabetology & Medicine',
+                  'Pediatrics & Neonatology',
+                  'Orthopaedics & Surgery',
+                  '24/7 Emergency Care'
+                ].map((dept, i) => (
+                  <li key={i} className="text-slate-500 font-bold text-lg flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-teal-400" /> {dept}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div>
-            <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-            <ul className="space-y-3 text-slate-500 font-medium text-sm">
-              <li><Link href="/doctors" className="hover:text-[#0F4C81] transition-colors">Our Doctors</Link></li>
-              <li><Link href="/doctors" className="hover:text-[#0F4C81] transition-colors">Book Appointment</Link></li>
-              <li><Link href="#departments" className="hover:text-[#0F4C81] transition-colors">Departments</Link></li>
-              <li><Link href="#about" className="hover:text-[#0F4C81] transition-colors">About Us</Link></li>
-            </ul>
+
+          <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-slate-400 font-bold">
+              © {new Date().getFullYear()} Hitanshi Hospital. All Rights Reserved.
+            </p>
+            <div className="flex gap-8">
+              <Link href="#" className="text-slate-400 hover:text-slate-600 font-bold text-sm">Privacy Policy</Link>
+              <Link href="#" className="text-slate-400 hover:text-slate-600 font-bold text-sm">Terms of Service</Link>
+            </div>
           </div>
-          <div>
-            <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-xs">Departments</h4>
-            <ul className="space-y-3 text-slate-500 font-medium text-sm">
-              <li>Obstetrics & Gynecology</li>
-              <li>Diabetology & General Medicine</li>
-              <li>Pediatrics & Neonatology</li>
-              <li>Orthopaedics & General Surgery</li>
-            </ul>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 pt-10 mt-10 border-t border-slate-100 text-center text-slate-400 text-sm font-medium">
-          © {new Date().getFullYear()} Hitanshi Hospital, Mira Road. All rights reserved.
         </div>
       </footer>
     </div>
   );
 }
 
-const services = [
+const facilities = [
   {
-    icon: <Stethoscope className="h-7 w-7" />,
-    bgColor: "bg-blue-50",
-    iconColor: "text-[#0F4C81]",
-    title: "Expert OPD",
-    description: "Walk-in or book online OPD consultations with specialist doctors.",
+    title: "ICU & NICU Units",
+    description: "Specialized critical care for adults and round-the-clock neonatology support for newborns.",
+    image: "/hospital-ward.png",
+    icon: <Bed size={28} />,
+    large: true,
   },
   {
-    icon: <Siren className="h-7 w-7" />,
-    bgColor: "bg-red-50",
-    iconColor: "text-red-500",
-    title: "24/7 Emergency",
-    description: "Round-the-clock emergency care with fully equipped trauma facilities.",
+    title: "Advanced Modular OT",
+    description: "Ultra-sterile operating theaters equipped for complex orthopedic and general surgeries.",
+    image: "/hospital-ot.png",
+    icon: <Scissors size={28} />,
   },
   {
-    icon: <TestTube className="h-7 w-7" />,
-    bgColor: "bg-teal-50",
-    iconColor: "text-teal-600",
-    title: "Diagnostic Lab",
-    description: "In-house pathology and radiology labs for rapid, accurate results.",
+    title: "Labour & Delivery",
+    description: "Private and comfortable labour rooms designed for a safe and celebratory birthing experience.",
+    image: "/hospital-labour.png",
+    icon: <Baby size={28} />,
   },
   {
-    icon: <Pill className="h-7 w-7" />,
-    bgColor: "bg-amber-50",
-    iconColor: "text-amber-600",
-    title: "24/7 Pharmacy",
-    description: "On-site pharmacy stocked with all essential medications, always open.",
+    title: "Emergency Care",
+    description: "24/7 dedicated trauma center and emergency medicine department for immediate response.",
+    image: "/hospital-corridor.png",
+    icon: <Siren size={28} />,
+  },
+  {
+    title: "Diagnostic Center",
+    description: "Fully automated in-house pathology and imaging center for accurate medical diagnosis.",
+    image: "/hospital-lab.png",
+    icon: <Microscope size={28} />,
   },
 ];
 
-const departments = [
-  "Obstetrics & Gynecology",
-  "Diabetology",
+const specializedServices = [
+  "High-Risk Pregnancy",
+  "Diabetes Management",
+  "Neonatal ICU (NICU)",
+  "Orthopaedic Surgery",
+  "Laparoscopic Surgery",
+  "Pediatric Surgery",
   "General Medicine",
-  "General Surgery",
-  "Orthopaedics",
-  "Pediatrics",
-  "Dermatology",
-  "Cardiology",
-  "Urology",
-  "Neurology",
-  "Oncology",
-  "Ophthalmology",
+  "Trauma & Emergency",
 ];

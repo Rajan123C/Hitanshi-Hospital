@@ -9,6 +9,7 @@ interface User {
   email: string;
   name: string;
   role: "PATIENT" | "DOCTOR" | "ADMIN";
+  avatar?: string | null;
 }
 
 interface AuthResponse {
@@ -23,6 +24,8 @@ interface AuthContextType {
   login: (data: any) => Promise<void>;
   register: (data: any) => Promise<void>;
   logout: () => void;
+  sendOtp: (email: string) => Promise<void>;
+  verifyOtp: (email: string, code: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -82,9 +85,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     router.push("/login");
   };
+  
+  const sendOtp = async (email: string) => {
+    await api.post("/auth/otp/send", { email });
+  };
+
+  const verifyOtp = async (email: string, code: string) => {
+    const res = (await api.post("/auth/otp/verify", { email, code })) as ApiResponse<AuthResponse>;
+    if (res.success && res.data) {
+      localStorage.setItem("access_token", res.data.accessToken);
+      localStorage.setItem("refresh_token", res.data.refreshToken);
+      setUser(res.data.user);
+      router.push("/dashboard");
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout, sendOtp, verifyOtp }}>
       {children}
     </AuthContext.Provider>
   );

@@ -4,6 +4,11 @@ import * as bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 const NEW_DOCTORS = [
+  { name: "Dr. Priti Sharma", specialization: "Obstetrics & Gynecology", gender: "F", qualifications: "MBBS, MS (Obs & Gyn)", fees: 700, experience: 35 },
+  { name: "Dr. R.K. Sharma", specialization: "Diabetologist", gender: "M", qualifications: "MBBS, PGDD (Diabetology)", fees: 600, experience: 25 },
+  { name: "Dr. Anjali Gupta", specialization: "Pediatrician", gender: "F", qualifications: "MBBS, MD (Pediatrics)", fees: 500, experience: 12 },
+  { name: "Dr. Vikram Singh", specialization: "Orthopedic Surgeon", gender: "M", qualifications: "MBBS, MS (Orthopaedics)", fees: 800, experience: 15 },
+  { name: "Dr. Sameer Khan", specialization: "Cardiologist", gender: "M", qualifications: "MBBS, MD, DM (Cardiology)", fees: 1000, experience: 18 },
   { name: "Dr. Aditi Agarwal", specialization: "General Surgeon", gender: "F", qualifications: "MBBS, MS (Surgery)", fees: 600, experience: 10 },
   { name: "Dr. Arun Dubey", specialization: "General Physician", gender: "M", qualifications: "MBBS, MD (General Medicine)", fees: 500, experience: 22 },
   { name: "Dr. Divya Baang", specialization: "General Physician", gender: "F", qualifications: "MBBS", fees: 400, experience: 8 },

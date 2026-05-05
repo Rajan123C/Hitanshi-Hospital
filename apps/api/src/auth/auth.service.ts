@@ -89,6 +89,97 @@ export class AuthService {
     };
   }
 
+  async validateGoogleUser(googleUser: any) {
+    let user = await this.prisma.user.findUnique({
+      where: { email: googleUser.email },
+    });
+
+    if (!user) {
+      user = await this.prisma.user.create({
+        data: {
+          email: googleUser.email,
+          name: googleUser.name,
+          googleId: googleUser.googleId,
+          avatar: googleUser.avatar,
+          role: Role.PATIENT,
+          isVerified: true,
+        },
+      });
+    } else if (!user.googleId) {
+      user = await this.prisma.user.update({
+        where: { id: user.id },
+        data: { googleId: googleUser.googleId, avatar: googleUser.avatar },
+      });
+    }
+
+    const tokens = await this.generateTokens(user.id, user.email, user.role);
+    return {
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar,
+      },
+      ...tokens,
+    };
+  }
+
+  async sendOtp(email: string) {
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+
+    await this.prisma.otp.create({
+      data: { email, code, expiresAt },
+    });
+
+    this.logger.log(`OTP for ${email}: ${code}`);
+    // In a real app, send email here
+    return { success: true, message: 'OTP sent successfully' };
+  }
+
+  async verifyOtp(email: string, code: string) {
+    const otp = await this.prisma.otp.findFirst({
+      where: { email, code, expiresAt: { gt: new Date() } },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    if (!otp) {
+      throw new UnauthorizedException('Invalid or expired OTP');
+    }
+
+    // Delete OTP after use
+    await this.prisma.otp.delete({ where: { id: otp.id } });
+
+    let user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      // Create user if not exists
+      user = await this.prisma.user.create({
+        data: {
+          email,
+          name: email.split('@')[0],
+          role: Role.PATIENT,
+          isVerified: true,
+        },
+      });
+    }
+
+    const tokens = await this.generateTokens(user.id, user.email, user.role);
+    return {
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar,
+      },
+      ...tokens,
+    };
+  }
+
   async refreshToken(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },

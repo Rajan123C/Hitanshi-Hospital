@@ -11,6 +11,8 @@ import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto } from './dto';
 import { JwtAuthGuard } from './guards';
 import { CurrentUser } from '../common/decorators';
+import { AuthGuard } from '@nestjs/passport';
+import { Req } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
@@ -38,5 +40,27 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   async getProfile(@CurrentUser('id') userId: string) {
     return this.authService.getProfile(userId);
+  }
+
+  // Google OAuth
+  @Get('google')
+  @UseGuards(AuthGuard('google'))
+  async googleAuth(@Req() req: any) {}
+
+  @Get('google/callback')
+  @UseGuards(AuthGuard('google'))
+  async googleAuthRedirect(@Req() req: any) {
+    return this.authService.validateGoogleUser(req.user);
+  }
+
+  // OTP Login
+  @Post('otp/send')
+  async sendOtp(@Body('email') email: string) {
+    return this.authService.sendOtp(email);
+  }
+
+  @Post('otp/verify')
+  async verifyOtp(@Body('email') email: string, @Body('code') code: string) {
+    return this.authService.verifyOtp(email, code);
   }
 }

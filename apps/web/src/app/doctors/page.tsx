@@ -1,169 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { DoctorCard } from "@/components/doctors/doctor-card";
 import { GlassCard } from "@/components/ui/glass-card";
-import { Phone, CheckCircle2 } from "lucide-react";
-
-const specialists = [
-  {
-    id: "1",
-    name: "Dr. Priti Sharma",
-    specialization: "Obstetrics & Gynecology",
-    department: "Women's Health",
-    qualifications: "MBBS, MS (Obs & Gyn)",
-    experience: 35,
-    fees: 700,
-    rating: 4.9,
-    avatar: "/dr-priti-sharma-final-real.jpg",
-    gender: "F",
-  },
-  {
-    id: "2",
-    name: "Dr. R.K. Sharma",
-    specialization: "Diabetologist",
-    department: "Chronic Care",
-    qualifications: "MBBS, PGDD (Diabetology)",
-    experience: 25,
-    fees: 600,
-    rating: 4.8,
-    avatar: "/dr-rk-sharma-final-real.png",
-    gender: "M",
-  },
-  {
-    id: "3",
-    name: "Dr. Anjali Gupta",
-    specialization: "Pediatrician",
-    department: "Child Care",
-    qualifications: "MBBS, MD (Pediatrics)",
-    experience: 12,
-    fees: 500,
-    rating: 4.7,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "4",
-    name: "Dr. Vikram Singh",
-    specialization: "Orthopedic Surgeon",
-    department: "Bone & Joint",
-    qualifications: "MBBS, MS (Orthopaedics)",
-    experience: 15,
-    fees: 800,
-    rating: 4.9,
-    avatar: null,
-    gender: "M",
-  },
-  {
-    id: "5",
-    name: "Dr. Sameer Khan",
-    specialization: "Cardiologist",
-    department: "Heart Health",
-    qualifications: "MBBS, MD, DM (Cardiology)",
-    experience: 18,
-    fees: 1000,
-    rating: 4.8,
-    avatar: null,
-    gender: "M",
-  },
-  {
-    id: "6",
-    name: "Dr. Aditi Agarwal",
-    specialization: "General Surgeon",
-    department: "Surgical Care",
-    qualifications: "MBBS, MS (Surgery)",
-    experience: 10,
-    fees: 600,
-    rating: 4.6,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "7",
-    name: "Dr. Arun Dubey",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS, MD (General Medicine)",
-    experience: 22,
-    fees: 500,
-    rating: 4.8,
-    avatar: null,
-    gender: "M",
-  },
-  {
-    id: "8",
-    name: "Dr. Divya Baang",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS",
-    experience: 8,
-    fees: 400,
-    rating: 4.5,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "9",
-    name: "Dr. Kavita Vishwakarma",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS",
-    experience: 7,
-    fees: 400,
-    rating: 4.4,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "10",
-    name: "Dr. Nikhil Agarwal",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS, MD",
-    experience: 14,
-    fees: 500,
-    rating: 4.7,
-    avatar: null,
-    gender: "M",
-  },
-  {
-    id: "11",
-    name: "Dr. Sonal Gohil",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS",
-    experience: 11,
-    fees: 400,
-    rating: 4.6,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "12",
-    name: "Dr. Swati Bamane",
-    specialization: "Gynaecologist & Obstetrician (MS)",
-    department: "Women's Health",
-    qualifications: "MBBS, MS (Obs & Gyn)",
-    experience: 13,
-    fees: 500,
-    rating: 4.8,
-    avatar: null,
-    gender: "F",
-  },
-  {
-    id: "13",
-    name: "Dr. Vijay Sharnangat",
-    specialization: "General Physician",
-    department: "Internal Medicine",
-    qualifications: "MBBS, MD",
-    experience: 20,
-    fees: 500,
-    rating: 4.9,
-    avatar: null,
-    gender: "M",
-  },
-];
+import { Phone, CheckCircle2, Loader2, Stethoscope } from "lucide-react";
+import { api, ApiResponse } from "@/lib/api";
 
 export default function DoctorsPage() {
+  const [doctors, setDoctors] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
+
+  const fetchDoctors = async () => {
+    try {
+      const res = (await api.get("/doctors?limit=50")) as ApiResponse<{ doctors: any[] }>;
+      if (res.success && res.data && res.data.doctors) {
+        setDoctors(res.data.doctors);
+      }
+    } catch (error) {
+      console.error("Failed to fetch doctors", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] pb-20">
       {/* Page Header */}
@@ -178,11 +41,24 @@ export default function DoctorsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-16 lg:px-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {specialists.map((doc) => (
-            <DoctorCard key={doc.id} doctor={doc} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center py-32 space-y-4">
+            <Loader2 className="h-12 w-12 text-[#0F4C81] animate-spin" />
+            <p className="text-slate-500 font-bold text-xl">Loading Specialists...</p>
+          </div>
+        ) : doctors.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {doctors.map((doc) => (
+              <DoctorCard key={doc.id} doctor={doc} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-32 space-y-4 bg-white rounded-[3rem] shadow-xl shadow-blue-900/5 max-w-4xl mx-auto">
+            <Stethoscope className="h-20 w-20 text-slate-200" />
+            <h3 className="text-2xl font-bold text-slate-900">No Specialists Found</h3>
+            <p className="text-slate-500">We are currently updating our doctor database. Please check back later.</p>
+          </div>
+        )}
 
         {/* Hospital Info Banner */}
         <div className="max-w-4xl mx-auto mt-20">
@@ -208,4 +84,3 @@ export default function DoctorsPage() {
     </div>
   );
 }
-
