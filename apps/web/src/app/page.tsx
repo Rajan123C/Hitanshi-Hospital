@@ -173,7 +173,7 @@ export default function Home() {
             {/* Dr. Priti Sharma Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-pink-500/5 blur-[80px] rounded-full -z-10 group-hover:bg-pink-500/10 transition-colors" />
-              <GlassCard intensity="none" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
+              <GlassCard intensity="low" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
                 <div className="relative h-[450px] lg:h-[500px]">
                   <Image 
                     src="/dr-priti-sharma-final-real.jpg" 
@@ -218,7 +218,7 @@ export default function Home() {
             {/* Dr. RK Sharma Card */}
             <div className="group relative">
               <div className="absolute inset-0 bg-blue-500/5 blur-[80px] rounded-full -z-10 group-hover:bg-blue-500/10 transition-colors" />
-              <GlassCard intensity="none" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
+              <GlassCard intensity="low" className="p-0 overflow-hidden border-slate-100 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-500 rounded-[3rem]">
                 <div className="relative h-[450px] lg:h-[500px]">
                   <Image 
                     src="/dr-rk-sharma-final-real.png" 
@@ -341,7 +341,7 @@ export default function Home() {
             
             <div className="relative">
               <div className="absolute inset-0 bg-teal-400/20 blur-[100px] rounded-full -z-10" />
-              <GlassCard intensity="none" className="bg-white p-12 lg:p-16 rounded-[3.5rem] border-none shadow-2xl">
+              <GlassCard intensity="low" className="bg-white p-12 lg:p-16 rounded-[3.5rem] border-none shadow-2xl">
                 <h3 className="text-3xl font-black text-slate-900 mb-10 flex items-center gap-3">
                   <div className="h-10 w-2 bg-[#0F4C81] rounded-full" /> Specialized Services
                 </h3>
