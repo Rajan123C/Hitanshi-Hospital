@@ -4,24 +4,35 @@ import { useEffect, useState } from "react";
 import { DoctorCard } from "@/components/doctors/doctor-card";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Phone, CheckCircle2, Loader2, Stethoscope } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { api, ApiResponse } from "@/lib/api";
 
 export default function DoctorsPage() {
   const [doctors, setDoctors] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchDoctors();
   }, []);
 
   const fetchDoctors = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const res = (await api.get("/doctors?limit=50")) as ApiResponse<{ doctors: any[] }>;
       if (res.success && res.data && res.data.doctors) {
-        setDoctors(res.data.doctors);
+        if (res.data.doctors.length === 0) {
+          setError("The doctor database appears to be empty. Please ensure the data is seeded.");
+        } else {
+          setDoctors(res.data.doctors);
+        }
+      } else {
+        setError("Failed to retrieve doctor data from the server.");
       }
-    } catch (error) {
-      console.error("Failed to fetch doctors", error);
+    } catch (err: any) {
+      console.error("Failed to fetch doctors", err);
+      setError("Unable to connect to the medical server. Please check your API configuration.");
     } finally {
       setIsLoading(false);
     }
@@ -45,6 +56,22 @@ export default function DoctorsPage() {
           <div className="flex flex-col items-center justify-center py-32 space-y-4">
             <Loader2 className="h-12 w-12 text-[#0F4C81] animate-spin" />
             <p className="text-slate-500 font-bold text-xl">Loading Specialists...</p>
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center py-32 space-y-6 bg-white rounded-[3rem] shadow-xl shadow-blue-900/5 max-w-4xl mx-auto px-6 text-center">
+            <div className="h-20 w-20 rounded-full bg-red-50 flex items-center justify-center text-red-500">
+              <Stethoscope className="h-10 w-10" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-2xl font-bold text-slate-900">{error}</h3>
+              <p className="text-slate-500 max-w-md mx-auto">This usually happens if the backend API URL is not correctly configured in your production environment variables (NEXT_PUBLIC_API_URL).</p>
+            </div>
+            <Button 
+              onClick={() => fetchDoctors()} 
+              className="rounded-xl h-12 px-8 bg-[#0F4C81] hover:bg-[#0d3f6b]"
+            >
+              Retry Connection
+            </Button>
           </div>
         ) : doctors.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
