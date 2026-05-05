@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -275,7 +276,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className={`h-10 w-10 rounded-lg bg-white/10 backdrop-blur-md mb-4 flex items-center justify-center text-white border border-white/20`}>
-                    {React.cloneElement(f.icon as React.ReactElement, { size: 20 })}
+                    {f.icon}
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2 tracking-tight">{f.title}</h3>
                   <p className="text-slate-300 text-base font-medium leading-relaxed">{f.description}</p>
@@ -400,32 +401,32 @@ const facilities = [
     title: "ICU & NICU Units",
     description: "Critical care for adults and newborns.",
     image: "/hospital-ward.png",
-    icon: <Bed />,
+    icon: <Bed size={20} />,
     large: true,
   },
   {
     title: "Modular OT",
     description: "Sterile theaters for complex surgeries.",
     image: "/hospital-ot.png",
-    icon: <Scissors />,
+    icon: <Scissors size={20} />,
   },
   {
     title: "Labour & Delivery",
     description: "Safe and comfortable birthing experience.",
     image: "/hospital-labour.png",
-    icon: <Baby />,
+    icon: <Baby size={20} />,
   },
   {
     title: "Emergency Care",
     description: "24/7 dedicated trauma center.",
     image: "/hospital-corridor.png",
-    icon: <Siren />,
+    icon: <Siren size={20} />,
   },
   {
     title: "Diagnostic Lab",
     description: "Fully automated in-house pathology.",
     image: "/hospital-lab.png",
-    icon: <Microscope />,
+    icon: <Microscope size={20} />,
   },
 ];
 
