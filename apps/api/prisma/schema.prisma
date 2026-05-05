@@ -100,4 +100,3 @@ model Appointment {
   @@index([date])
   @@index([status])
 }
-
